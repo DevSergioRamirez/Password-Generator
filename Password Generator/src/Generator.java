@@ -1,4 +1,4 @@
-import java.util.Objects;
+
 import java.util.Scanner;
 
 public class Generator {
@@ -47,16 +47,12 @@ public class Generator {
     }
 
     private Password GeneratePassword(int length) {
-        final StringBuilder pass = new StringBuilder("");
+        final StringBuilder pass = new StringBuilder();
 
         final int alphabetLength = alphabet.getAlphabet().length();
 
-        int max = alphabetLength - 1;
-        int min = 0;
-        int range = max - min + 1;
-
         for (int i = 0; i < length; i++) {
-            int index = (int) (Math.random() * range) + min;
+            int index = (int) (Math.random() * alphabetLength);
             pass.append(alphabet.getAlphabet().charAt(index));
         }
 
@@ -144,12 +140,7 @@ public class Generator {
     }
 
     private boolean isInclude(String Input) {
-        if (Input.equalsIgnoreCase("yes")) {
-            return true;
-        } 
-        else {
-            return false;
-        }
+        return Input.equalsIgnoreCase("yes");
     }
 
     private void PasswordRequestError(String i) {
